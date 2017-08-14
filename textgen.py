@@ -10,11 +10,11 @@ def get_next_state(markov_chain, state):
     next_state_counts = list(map(lambda x: x[1], next_state_items))
     total_count = sum(next_state_counts)
     next_state_probabilities = []
-    running_total = 0
+    probability_total = 0
     for next_state_count in next_state_counts:
         probability = float(next_state_count) / total_count
-        running_total += probability
-        next_state_probabilities.append(running_total)
+        probability_total += probability
+        next_state_probabilities.append(probability_total)
     sample = random.random()
     for index, next_state_probability in enumerate(next_state_probabilities):
         if sample <= next_state_probability:
