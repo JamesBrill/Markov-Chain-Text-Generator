@@ -54,11 +54,10 @@ def generate_text(markov_chain, words):
     state = get_random_capitalised_state(markov_chain)
     text = state.split()[:words]
     while len(text) < words:
-        next_state = get_next_state(markov_chain, state)
-        if next_state is None:
-            next_state = get_random_capitalised_state(markov_chain)
-        state = next_state
-        text.append(next_state.split()[-1])
+        text.append(state.split()[-1])
+        state = get_next_state(markov_chain, state)
+        if state is None:
+            state = get_random_capitalised_state(markov_chain)
     return ' '.join(text)
 
 if __name__ == '__main__':
