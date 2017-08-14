@@ -1,5 +1,6 @@
 import random
 import queue
+import argparse
 from collections import defaultdict
 
 
@@ -61,6 +62,15 @@ def generate_text(markov_chain, words):
     return ' '.join(text)
 
 if __name__ == '__main__':
-    tokens = tokenise_text_file()
-    markov_chain = create_markov_chain(tokens, order=2)
-    print(generate_text(markov_chain, 50))
+    parser = argparse.ArgumentParser(description='Markov Chain Text Generator')
+    parser.add_argument('-f', '--file', default='text',
+                        help='Name of file to read text from.')
+    parser.add_argument('-o', '--order', default=2, type=int,
+                        help='Number of past states each state depends on.')
+    parser.add_argument('-w', '--words', default=100, type=int,
+                        help='Number of words to generate.')
+    pargs = parser.parse_args()
+
+    tokens = tokenise_text_file(pargs.file)
+    markov_chain = create_markov_chain(tokens, order=pargs.order)
+    print(generate_text(markov_chain, pargs.words))
