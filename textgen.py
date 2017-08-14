@@ -18,18 +18,11 @@ def get_next_state(markov_chain, state):
     return None
 
 
-def main():
+def tokenise_text_file():
     with open('text', 'r') as file:
-        for line in file:
-            print(line)
+        return ' '.join(file).split()
 
 
 if __name__ == '__main__':
-    markov_chain = {
-        'a': {
-            'b': 3,
-            'c': 1,
-            'f': 7
-        }
-    }
-    print(get_next_state(markov_chain, 'a'))
+    print(tokenise_text_file())
+    # print(tokenise('a b a a c b c'))
