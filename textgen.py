@@ -28,7 +28,7 @@ def tokenise_text_file(file_name):
 
 def create_markov_chain(tokens, order):
     if order > len(tokens):
-        raise Error('Order greater than number of tokens.')
+        raise Exception('Order greater than number of tokens.')
     markov_chain = defaultdict(lambda: defaultdict(int))
     current_state_queue = queue.Queue()
     for index, token in enumerate(tokens):
