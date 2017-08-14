@@ -1,4 +1,6 @@
 import random
+from collections import defaultdict
+
 
 def get_next_state(markov_chain, state):
     next_state_items = markov_chain[state].items()
@@ -23,6 +25,16 @@ def tokenise_text_file():
         return ' '.join(file).split()
 
 
+def create_markov_chain(tokens):
+    markov_chain = defaultdict(lambda: defaultdict(int))
+    for index, token in enumerate(tokens):
+        if index < len(tokens) - 1:
+            next_state = tokens[index + 1]
+            markov_chain[token][next_state] += 1
+    return markov_chain
+
+
 if __name__ == '__main__':
-    print(tokenise_text_file())
-    # print(tokenise('a b a a c b c'))
+    tokens = tokenise_text_file()
+    markov_chain = create_markov_chain(tokens)
+    print(get_next_state(markov_chain, 'fuck'))
