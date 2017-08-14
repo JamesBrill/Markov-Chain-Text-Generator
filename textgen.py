@@ -21,8 +21,8 @@ def get_next_state(markov_chain, state):
     return None
 
 
-def tokenise_text_file():
-    with open('text', 'r') as file:
+def tokenise_text_file(file_name):
+    with open(file_name, 'r') as file:
         return ' '.join(file).split()
 
 
