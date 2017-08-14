@@ -35,8 +35,7 @@ def create_markov_chain(tokens):
 
 
 def generate_text(markov_chain, iterations):
-    text = ''
-    state = markov_chain.keys()[0]
+    text = state = random.choice([state for state in markov_chain.keys() if state[0].isupper()])
     for i in range(iterations):
         next_state = get_next_state(markov_chain, state)
         text = '{} {}'.format(text, next_state)
