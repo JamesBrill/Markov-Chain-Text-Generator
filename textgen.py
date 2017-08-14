@@ -34,12 +34,14 @@ def create_markov_chain(tokens, order):
     for index, token in enumerate(tokens):
         if index < order:
             current_state_queue.put(token)
+            if index == order - 1:
+                current_state = ' '.join(list(current_state_queue.queue))
         elif index < len(tokens):
-            current_state = ' '.join(list(current_state_queue.queue))
             current_state_queue.get()
             current_state_queue.put(token)
             next_state = ' '.join(list(current_state_queue.queue))
             markov_chain[current_state][next_state] += 1
+            current_state = next_state
     return markov_chain
 
 
