@@ -47,7 +47,10 @@ def create_markov_chain(tokens, order):
 
 
 def get_random_capitalised_state(markov_chain):
-    return random.choice([state for state in markov_chain.keys() if state[0].isupper()])
+    uppercase_states = [state for state in markov_chain.keys() if state[0].isupper()]
+    if len(uppercase_states) == 0:
+        return random.choice(list(markov_chain.keys()))
+    return random.choice(uppercase_states)
 
 
 def generate_text(markov_chain, words):
