@@ -6,8 +6,8 @@ from collections import defaultdict
 
 def get_next_state(markov_chain, state):
     next_state_items = list(markov_chain[state].items())
-    next_states = list(map(lambda x: x[0], next_state_items))
-    next_state_counts = list(map(lambda x: x[1], next_state_items))
+    next_states = [x[0] for x in next_state_items]
+    next_state_counts = [x[1] for x in next_state_items]
     total_count = sum(next_state_counts)
     next_state_probabilities = []
     probability_total = 0
