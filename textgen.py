@@ -45,13 +45,14 @@ def create_markov_chain(tokens, order):
     return markov_chain
 
 
-def generate_text(markov_chain, iterations):
-    text = state = random.choice([state for state in markov_chain.keys() if state[0].isupper()])
-    for i in range(iterations):
+def generate_text(markov_chain, words):
+    state = random.choice([state for state in markov_chain.keys() if state[0].isupper()])
+    text = state.split()[:words]
+    while len(text) < words:
         next_state = get_next_state(markov_chain, state)
-        text = '{} {}'.format(text, next_state.split()[-1])
         state = next_state
-    return text
+        text.append(next_state.split()[-1])
+    return ' '.join(text)
 
 if __name__ == '__main__':
     tokens = tokenise_text_file()
