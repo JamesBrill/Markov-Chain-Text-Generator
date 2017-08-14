@@ -34,7 +34,16 @@ def create_markov_chain(tokens):
     return markov_chain
 
 
+def generate_text(markov_chain, iterations):
+    text = ''
+    state = markov_chain.keys()[0]
+    for i in range(iterations):
+        next_state = get_next_state(markov_chain, state)
+        text = '{} {}'.format(text, next_state)
+        state = next_state
+    return text
+
 if __name__ == '__main__':
     tokens = tokenise_text_file()
     markov_chain = create_markov_chain(tokens)
-    print(get_next_state(markov_chain, 'fuck'))
+    print(generate_text(markov_chain, 50))
