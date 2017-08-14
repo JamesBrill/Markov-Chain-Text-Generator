@@ -65,7 +65,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Markov Chain Text Generator')
     parser.add_argument('-f', '--file', default='text',
                         help='Name of file to read text from.')
-    parser.add_argument('-o', '--order', default=2, type=int,
+    parser.add_argument('-o', '--order', default=1, type=int,
                         help='Number of past states each state depends on.')
     parser.add_argument('-w', '--words', default=100, type=int,
                         help='Number of words to generate.')
