@@ -45,11 +45,17 @@ def create_markov_chain(tokens, order):
     return markov_chain
 
 
+def get_random_capitalised_state(markov_chain):
+    return random.choice([state for state in markov_chain.keys() if state[0].isupper()])
+
+
 def generate_text(markov_chain, words):
-    state = random.choice([state for state in markov_chain.keys() if state[0].isupper()])
+    state = get_random_capitalised_state(markov_chain)
     text = state.split()[:words]
     while len(text) < words:
         next_state = get_next_state(markov_chain, state)
+        if next_state is None:
+            next_state = get_random_capitalised_state(markov_chain)
         state = next_state
         text.append(next_state.split()[-1])
     return ' '.join(text)
