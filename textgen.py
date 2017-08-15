@@ -50,7 +50,7 @@ def create_markov_chain(tokens, order):
     return markov_chain
 
 
-def get_random_capitalised_state(markov_chain):
+def get_random_state(markov_chain):
     uppercase_states = [state for state in markov_chain.keys() if state[0].isupper()]
     if len(uppercase_states) == 0:
         return random.choice(list(markov_chain.keys()))
@@ -58,12 +58,12 @@ def get_random_capitalised_state(markov_chain):
 
 
 def generate_text(markov_chain, words):
-    state = get_random_capitalised_state(markov_chain)
+    state = get_random_state(markov_chain)
     text = state.split()[:words]
     while len(text) < words:
         state = get_next_state(markov_chain, state)
         if state is None:
-            state = get_random_capitalised_state(markov_chain)
+            state = get_random_state(markov_chain)
         text.append(state.split()[-1])
     return ' '.join(text)
 
