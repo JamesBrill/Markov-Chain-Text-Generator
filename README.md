@@ -1,6 +1,6 @@
 # Markov Chain Text Generator
 
-Takes text from a file and generates some random (but readable) text from it using a Markov chain. Bigger input text is recommended for more interesting results.
+Takes text from a file and generates some random (but readable) text from it using a Markov chain. Bigger input text is recommended for more interesting results. Comes with an example input file that combines The Hobbit with Fifty Shades of Grey.
 
 
 ### Options
@@ -11,6 +11,6 @@ Takes text from a file and generates some random (but readable) text from it usi
 
 ### Example usage
 
-To generate 30 words from text in `foo.txt` with a Markov chain of order 2:
+To generate 500 words from text in `example-input` with a Markov chain of order 1:
 
-`python textgen.py -f foo.txt -o 2 -w 30`
+`python textgen.py -f example-input -o 1 -w 500`
