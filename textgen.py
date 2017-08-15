@@ -1,7 +1,11 @@
 import random
-import queue
 import argparse
 from collections import defaultdict
+import sys
+if sys.version_info >= (3,):
+    import queue
+else:
+    import Queue as queue
 
 
 def get_next_state(markov_chain, state):
