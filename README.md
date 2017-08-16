@@ -14,3 +14,7 @@ Takes text from a file and generates some random (but readable) text from it usi
 To generate 500 words from text in `example-input` with a Markov chain of order 1:
 
 `python textgen.py -f example-input -o 1 -w 500`
+
+### Example output
+
+`...but how Gandalf got there, with all his wet hole, and filled with velvety soft, organic bamboo viscose that you mean about them, when Bilbo (who had got quite uncomfortable dreams...`
